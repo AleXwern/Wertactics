@@ -14,7 +14,35 @@
 # define GFX_H
 
 # include <3ds.h>
-# include "tactics.h"
+# include "citro2d.h"
+
+# define NUM_SPRITES	3
+# define NUM_NPC_SPRITES	12
+
+typedef enum
+{
+	EFF_SCROLL_NONE =	0,
+	EFF_SCROLL_WPLR =	(1 << 0),
+	EFF_SCROLL_RIGHT =	(1 << 1),
+	EFF_SCROLL_LEFT =	(1 << 2),
+	EFF_SCROLL_UP =		(1 << 3),
+	EFF_SCROLL_DOWN =	(1 << 4),
+	EFF_SCROLL_BLEND =	(1 << 5),
+	EFF_SCROLL_REV =	(1 << 6)
+}				e_bgEffect;
+
+typedef struct	s_bg
+{
+	u16			id;
+	e_bgEffect	effect;
+}				t_bg;
+
+typedef struct	s_background
+{
+	t_bg		back;
+	t_bg		front;
+	t_bg		fore;
+}				t_background;
 
 typedef struct  s_gfxdim
 {

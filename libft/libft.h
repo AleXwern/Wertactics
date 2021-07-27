@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: AleXwern <AleXwern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 11:50:15 by anystrom          #+#    #+#             */
-/*   Updated: 2021/07/09 21:34:05 by marvin           ###   ########.fr       */
+/*   Updated: 2021/07/27 16:37:25 by AleXwern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,33 +15,19 @@
 # include <string.h>
 #ifndef _WIN32
 # include <unistd.h>
+#else
+# include <sys\types.h>
+# include <sys\stat.h>
+# include <fcntl.h>
 #endif
 # include <stdlib.h>
+# include "get_next_line.h"
 
-/*
-**	Macros to fulfill spesific UNIX/Windows standards.
-**	Purely there so it's easier to work with multiple devices.
-*/
 # ifndef INT_MIN
 #  define INT_MIN	0xffffffff
 # endif
 # define WORD		32
-# ifdef _WIN64 //Remove for final version
-#  define read	_read
-#  define write	_write
-#  define read _read
-#  define open _open
-# endif
 
-# if _WIN32 || _WIN64 || __x86_64__ || __ppc64__
-#  define ENV64BIT
-# endif
-
-/*
-** Typedefine unsigned variable to more compact form based on
-** system architechture.
-** aka invoke compiler error if bad system.
-*/
 typedef unsigned long	t_uint64;
 typedef unsigned int	t_uint32;
 typedef unsigned short	t_uint16;

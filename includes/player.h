@@ -28,7 +28,15 @@ typedef struct	s_player
 {
 	u16			x;
 	u16			y;
-	s8			lock;
+	union		u_lock
+	{
+		s16		check;
+		struct	s_lock
+		{
+			s8	x;
+			s8	y;
+		}		xy;
+	}			lock;
 	e_npcDir	direction;
 	e_npcSprite	sprite;
 	s8			speed;

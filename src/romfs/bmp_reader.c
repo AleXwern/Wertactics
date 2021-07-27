@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   bmp_reader.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: AleXwern <AleXwern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/30 12:16:01 by anystrom          #+#    #+#             */
-/*   Updated: 2021/07/11 12:38:13 by marvin           ###   ########.fr       */
+/*   Updated: 2021/07/27 15:59:04 by AleXwern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/tactics.h"
-#include "../includes/bmp.h"
+#include "tactics.h"
+#include "bmp.h"
 
 int			read_to_pixdata(t_bmphead bmp, uint32_t bread, int fd)
 {

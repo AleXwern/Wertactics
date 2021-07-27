@@ -16,7 +16,6 @@
 int				main()
 {
 	C3D_RenderTarget	*top;
-	t_background	bg;
 	u64				time, newtime;
 	u64				fps;
 
@@ -29,9 +28,9 @@ int				main()
 		exit_out("Couldn't load npcs!");
 	time = osGetTime();
 	fps = 0;
-	bg = (t_background){{.id = 0, .effect = EFF_SCROLL_WPLR},
-						{.id = 1, .effect = EFF_SCROLL_WPLR},
-						{.id = 2, .effect = EFF_SCROLL_WPLR}};
+	g_map = (t_area*)linearAlloc(sizeof(t_area));
+	if (load_map(ft_itoa(0)))
+		exit_out("Map error");
 	audio_load();
 	load_effect("romfs:/eff0.wav", 0);
 	load_effect("romfs:/eff1.wav", 1);
@@ -43,7 +42,7 @@ int				main()
 		C3D_FrameBegin(C3D_FRAME_SYNCDRAW);
 		C2D_TargetClear(top, 0x000000ff);
 		C2D_SceneBegin(top);
-		draw_background(&bg);
+		draw_background();
 		C3D_FrameEnd(0);
 		newtime = osGetTime();
 		if (newtime - time > 1000)
