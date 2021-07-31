@@ -14,6 +14,9 @@
 # define AUDIO_H
 
 #include "tactics.h"
+#include <3ds.h>
+#include <SDL/SDL.h>
+#include <SDL/SDL_mixer.h>
 
 /*
 **	Note the following:
@@ -22,8 +25,18 @@
 **	sound effects on channels 9-31
 */
 # define SAMPLERATE		44100
+# define SFX_COUNT		2
 # define MAX_CHANNELS	CSND_NUM_CHANNELS
 # define MIN_EFFCHANNEL	9
 # define MUSIC_CHANNEL	8
+
+typedef struct	s_audio
+{
+	long		rate;
+	int			channels;
+	int			encoding;
+	size_t		buffersize;
+	u16			*buffer[2];
+}				t_audio;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: AleXwern <AleXwern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 14:16:43 by AleXwern          #+#    #+#             */
-/*   Updated: 2021/07/27 17:12:00 by AleXwern         ###   ########.fr       */
+/*   Updated: 2021/08/01 00:51:59 by AleXwern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,16 @@ static int	keys_down(void)
 				speed = 2;
 				break;
 			case KEY_Y:
-				play_effect(0);
+				//sfx_play(0);
 				break;
 			case KEY_X:
-				play_effect(1);
+				//sfx_play(1);
 				break;
 			case KEY_L:
-				audio_swap("romfs:/str4E.wav");
+				swap_music("romfs:/str4E.ogg");
 				break;
 			case KEY_R:
-				audio_swap("romfs:/finboss.wav");
+				swap_music("romfs:/finboss.ogg");
 				break;
 			default:
 				break;
@@ -78,12 +78,14 @@ static int	keys_up(void)
 
 static int	keys_held(void)
 {
-	u32	keys;
-	u32	key;
+	u32		keys;
+	u32		key;
+	bool	moved;
 
 	if (g_player.lock.check)
 		return (0);
 	keys = hidKeysHeld();
+	moved = 0;
 	while (keys)
 	{
 		key = keys & -keys;		//Extract the lowest set bit and perform switchCase with it.
@@ -97,15 +99,17 @@ static int	keys_held(void)
 				g_player.x--;
 				g_player.lock.xy.x = 18;
 				printf("\x1b[7;0HPosX %05u\nTile %u", g_player.x, g_map->tile[g_player.y * g_map->width + g_player.x].type);
+				moved = 1;
 				break;
 			case KEY_DRIGHT:
 				g_player.direction = NPC_DIR_RIGHT;
-				if (g_player.x == 1000 ||
+				if (g_player.x == g_map->width - 1 ||
 					g_map->tile[g_player.y * g_map->width + (g_player.x + 1)].type)
 					break;
 				g_player.x++;
 				g_player.lock.xy.x = -18;
 				printf("\x1b[7;0HPosX %05u\nTile %u", g_player.x, g_map->tile[g_player.y * g_map->width + g_player.x].type);
+				moved = 1;
 				break;
 			case KEY_DUP:
 				g_player.direction = NPC_DIR_BACK;
@@ -115,21 +119,25 @@ static int	keys_held(void)
 				g_player.y--;
 				g_player.lock.xy.y = 18;
 				printf("\x1b[7;0HPosY %05u\nTile %u", g_player.y, g_map->tile[g_player.y * g_map->width + g_player.x].type);
+				moved = 1;
 				break;
 			case KEY_DDOWN:
 				g_player.direction = NPC_DIR_FRONT;
-				if (g_player.y == 1000 ||
+				if (g_player.y == g_map->height - 1 ||
 					g_map->tile[(g_player.y + 1) * g_map->width + g_player.x].type)
 					break;
 				g_player.y++;
 				g_player.lock.xy.y = -18;
 				printf("\x1b[7;0HPosY %05u\nTile %u", g_player.y, g_map->tile[g_player.y * g_map->width + g_player.x].type);
+				moved = 1;
 				break;
 			default:
 				break;
 		}
 		keys -= key;		//Remove the bit from "queue" and try loop again.
 	}
+	if (moved)
+		try_load_warp();
 	return (0);
 }
 

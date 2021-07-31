@@ -34,6 +34,7 @@ typedef struct		s_area
 {
 	u16				width;		//width of the map
 	u16				height;		//height of the map
+	u8				warpcount;
 	t_background	bg;			//background graphics and flags
 	t_tile			*tile;		//list of all the tiles
 	t_warp			*warp;		//list of all the warps

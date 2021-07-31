@@ -73,7 +73,6 @@ typedef enum
 	NPC_DIR_LEFT =	6,
 	NPC_DIR_RIGHT =	9
 }				e_npcDir;
-extern t_gfxdim     g_npcDim[];
 extern C2D_Sprite   *g_npcs;
 
 #endif

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/tactics.h"
+#include "tactics.h"
 
 int		init_all(void)
 {
@@ -21,17 +21,28 @@ int		init_all(void)
 	if (romfsInit())
 		return (0);
 	consoleInit(GFX_BOTTOM, NULL);
-	csndInit();
+	//csndInit();
+	//ndspInit();
+	SDL_Init(SDL_INIT_AUDIO);
+	printf("\x1b[12;0HSDL: %s\n", SDL_GetError());
+	Mix_Init(MIX_INIT_OGG);
+	printf("\x1b[13;0HMIXER: %s\n", Mix_GetError());
+	//if (mpg123_init())
+	//	return (0);
 	return (1);
 }
 
 int		exit_all(void)
 {
-	audio_stop();
-	csndExit();
+	//audio_stop();
+	//csndExit();
+	Mix_Quit();
+	SDL_Quit();
+	ndspExit();
 	romfsExit();
 	C2D_Fini();
 	C3D_Fini();
 	gfxExit();
+	//mpg123_exit();
 	return (1);
 }

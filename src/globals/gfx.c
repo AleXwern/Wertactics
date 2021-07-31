@@ -14,24 +14,10 @@
 
 t_gfxdim		g_bgDim[] = {
     {.width = 425, .height = 240},
-    //{.width = 572, .height = 240},
-	{.width = 760, .height = 260},
+    {.width = 572, .height = 240},
+	//{.width = 760, .height = 260},
     {.width = 868, .height = 240}
 };
 C2D_Sprite		*g_backgrounds = NULL;
 
-t_gfxdim		g_npcDim[] = {
-    {.width = 19, .height = 20},
-    {.width = 19, .height = 20},
-    {.width = 19, .height = 20},
-    {.width = 19, .height = 20},
-    {.width = 19, .height = 20},
-    {.width = 19, .height = 20},
-    {.width = 19, .height = 20},
-    {.width = 19, .height = 20},
-    {.width = 19, .height = 20},
-    {.width = 19, .height = 20},
-    {.width = 19, .height = 20},
-    {.width = 19, .height = 20}
-};
 C2D_Sprite		*g_npcs = NULL;

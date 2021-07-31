@@ -30,7 +30,9 @@
 # include "gfx.h"
 # include "player.h"
 
+# define TOP_X_2	200
 # define TOP_X		400
+# define TOP_Y_2	120
 # define TOP_Y		240
 
 typedef struct	s_gfx
@@ -56,13 +58,10 @@ bool	load_backgrounds();
 bool	load_PlayerNPC();
 int		key_state_game(void);
 
-void	audio_load(void);
-void	audio_stop(void);
-void	audio_swap(const char *file);
+int		load_music(const char *path);
+int		swap_music(const char *path);
 
-void	play_effect(u8 id);
-void	load_effect(const char *path, u8 id);
-
-int		load_map(char *id);
+int		load_map(char *id, u16 x, u16 y);
+void	try_load_warp();
 
 #endif

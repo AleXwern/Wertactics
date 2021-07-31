@@ -6,6 +6,10 @@ ifeq ($(strip $(DEVKITARM)),)
 $(error "Please set DEVKITARM in your environment. export DEVKITARM=<path to>devkitARM")
 endif
 
+ifeq ($(strip $(DEVKITPRO)),)
+$(error "Please set DEVKITPRO in your environment. export DEVKITPRO=<path to>devkitPro")
+endif
+
 TOPDIR ?= $(CURDIR)
 include $(DEVKITARM)/3ds_rules
 
@@ -35,7 +39,10 @@ BUILD		:=	build
 #SOURCES		:=	src libft libax src/constants src/input
 SOURCES		:=	$(sort $(dir $(wildcard src/*/))) src libft libax
 DATA		:=	data
-INCLUDES	:=	includes libft libax
+INCLUDES	:=	includes libft libax \
+				-I$(DEVKITPRO)/portlibs/armv6k/include \
+				-I$(DEVKITPRO)/portlibs/3ds/include \
+				-I$(DEVKITPRO)/portlibs/3ds/include/SDL
 GRAPHICS	:=	gfx gfx/player
 #GFXBUILD	:=	$(BUILD)
 APP_TITLE	:=	Wertactics
@@ -43,6 +50,7 @@ APP_DESCRIPTION	:=	FF6 inspired small game.
 APP_AUTHOR	:=	AleXwern
 ROMFS		:=	romfs
 GFXBUILD	:=	$(ROMFS)/gfx
+IPADDR		:=	192.168.137.64
 
 #---------------------------------------------------------------------------------
 # options for code generation
@@ -53,20 +61,20 @@ CFLAGS	:=	-g -Wall -O2 -mword-relocations \
 			-fomit-frame-pointer -ffunction-sections \
 			$(ARCH)
 
-CFLAGS	+=	$(INCLUDE) -DARM11 -D_3DS
+CFLAGS	+=	$(INCLUDE) -DARM11 -D_3DS -D__3DS__ `$$DEVKITPRO/portlibs/3ds/bin/sdl-config --cflags`
 
 CXXFLAGS	:= $(CFLAGS) -fno-rtti -fno-exceptions -std=gnu++11
 
 ASFLAGS	:=	-g $(ARCH)
 LDFLAGS	=	-specs=3dsx.specs -g $(ARCH) -Wl,-Map,$(notdir $*.map)
 
-LIBS	:= -lcitro2d -lcitro3d -lctru -lm
+LIBS	:= -lSDL -lSDL_mixer -lmpg123 -lmad -logg -lmikmod -lvorbisidec -logg -lSDL -lcitro2d -lcitro3d -lctru -lm
 
 #---------------------------------------------------------------------------------
 # list of directories containing libraries, this must be the top level containing
 # include and lib
 #---------------------------------------------------------------------------------
-LIBDIRS	:= $(CTRULIB)
+LIBDIRS	:= $(CTRULIB) $(DEVKITPRO)/portlibs/armv6k $(DEVKITPRO)/portlibs/3ds
 
 #---------------------------------------------------------------------------------
 # no real need to edit anything past this point unless you need to add additional
@@ -180,7 +188,7 @@ all: $(BUILD) $(GFXBUILD) $(DEPSDIR) $(ROMFS_T3XFILES) $(T3XHFILES)
 	@$(MAKE) --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
 
 run: all
-	3dslink -a 192.168.137.126 Wer6.3dsx
+	3dslink -a $(IPADDR) Wer6.3dsx
 
 else
 
