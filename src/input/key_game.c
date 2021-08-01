@@ -6,7 +6,7 @@
 /*   By: AleXwern <AleXwern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 14:16:43 by AleXwern          #+#    #+#             */
-/*   Updated: 2021/08/01 00:51:59 by AleXwern         ###   ########.fr       */
+/*   Updated: 2021/08/01 14:40:31 by AleXwern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ static int	keys_down(void)
 				speed = 2;
 				break;
 			case KEY_Y:
-				//sfx_play(0);
+				play_sfx(0);
 				break;
 			case KEY_X:
-				//sfx_play(1);
+				play_sfx(1);
 				break;
 			case KEY_L:
 				swap_music("romfs:/str4E.ogg");

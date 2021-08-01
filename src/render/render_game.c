@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sfx[id].c                                              :+:      :+:    :+:   */
+/*   render_game.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: AleXwern <AleXwern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/31 15:10:00 by AleXwern          #+#    #+#             */
-/*   Updated: 2021/07/31 15:10:00 by AleXwern         ###   ########.fr       */
+/*   Created: 2021/08/01 15:21:24 by AleXwern          #+#    #+#             */
+/*   Updated: 2021/08/01 15:21:24 by AleXwern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tactics.h"
-#include "audio.h"
 
-Mix_Chunk	*sfx[2];
-
-int			load_sfx(const char *path, u16 id)
+void		render_game(t_screen *top)
 {
-	sfx[id] = Mix_LoadWAV(path);
-	return (1);
-}
-
-int			play_sfx(u16 id)
-{
-	static u8	chn;
-
-	if (chn < 1 || chn >= MAX_CHANNELS)
-		chn = 1;
-	Mix_PlayChannel(chn, sfx[id], 0);
-	chn++;
-	return (1);
+	C2D_TargetClear(top, 0x000000ff);
+	C2D_SceneBegin(top);
+	draw_background();
 }

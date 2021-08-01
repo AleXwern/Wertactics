@@ -35,6 +35,8 @@
 # define TOP_Y_2	120
 # define TOP_Y		240
 
+typedef C3D_RenderTarget t_screen;
+
 typedef struct	s_gfx
 {
 	u32			*data;
@@ -56,10 +58,17 @@ void	exit_out(const char *msg);
 
 bool	load_backgrounds();
 bool	load_PlayerNPC();
+
+void	game_loop(void);
+void	set_gameloop(void (*render)(t_screen*), int (*keyhandle)(void));
+void	render_game(t_screen *top);
 int		key_state_game(void);
 
 int		load_music(const char *path);
 int		swap_music(const char *path);
+int		load_sfx(const char *path, u16 id);
+int		play_sfx(u16 id);
+void	resume_music(void);
 
 int		load_map(char *id, u16 x, u16 y);
 void	try_load_warp();

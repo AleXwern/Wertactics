@@ -7,3 +7,4 @@ send.bat
 libctru/**
 build/**
 .vscode/**
+TEMP/**

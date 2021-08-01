@@ -26,7 +26,7 @@
 */
 # define SAMPLERATE		44100
 # define SFX_COUNT		2
-# define MAX_CHANNELS	CSND_NUM_CHANNELS
+# define MAX_CHANNELS	8
 # define MIN_EFFCHANNEL	9
 # define MUSIC_CHANNEL	8
 
