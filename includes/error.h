@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gfx.c                                              :+:      :+:    :+:   */
+/*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: AleXwern <AleXwern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/11 22:06:05 by AleXwern          #+#    #+#             */
-/*   Updated: 2021/07/11 22:06:05 by AleXwern         ###   ########.fr       */
+/*   Created: 2021/08/02 15:29:37 by AleXwern          #+#    #+#             */
+/*   Updated: 2021/08/02 15:29:37 by AleXwern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "gfx.h"
+#ifndef ERROR_H
+# define ERROR_H
 
-t_gfxdim		g_bgDim[] = {
-    {.width = 425, .height = 240},
-    //{.width = 572, .height = 240},
-	{.width = 760, .height = 260},
-    {.width = 868, .height = 240}
-};
-C2D_Sprite		*g_backgrounds = NULL;
+# define MALLOC_ERROR	"Out of memory!"
+# define MM_ERROR		"Main menu couldn't be loaded."
 
-C2D_Sprite		*g_npcs = NULL;
+#endif

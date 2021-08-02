@@ -29,6 +29,7 @@
 # include "bmp.h"
 # include "gfx.h"
 # include "player.h"
+# include "error.h"
 
 # define TOP_X_2	200
 # define TOP_X		400
@@ -50,6 +51,8 @@ typedef struct	s_gfx
 
 int		exit_all(void);
 int		init_all(void);
+void	init_mm_sequence();
+void	exit_mm_sequence();
 
 void	draw_background();
 t_gfx	read_bmp(char *file, int fd, int bread);
@@ -63,6 +66,7 @@ void	game_loop(void);
 void	set_gameloop(void (*render)(t_screen*), int (*keyhandle)(void));
 void	render_game(t_screen *top);
 int		key_state_game(void);
+int		key_state_mm(void);
 
 int		load_music(const char *path);
 int		swap_music(const char *path);

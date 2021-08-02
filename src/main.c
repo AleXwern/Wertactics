@@ -16,8 +16,8 @@ int				main(void)
 {
 	if (init_all())
 		ft_putendl("Inizialized systems!");
-	if (!load_backgrounds())
-		exit_out("Couldn't load backdrops!");
+	//if (!load_backgrounds())
+	//	exit_out("Couldn't load backdrops!");
 	if (!load_PlayerNPC())
 		exit_out("Couldn't load npcs!");
 	g_map = (t_area*)linearAlloc(sizeof(t_area));

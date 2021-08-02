@@ -36,14 +36,13 @@ include $(DEVKITARM)/3ds_rules
 #---------------------------------------------------------------------------------
 TARGET		:=	$(notdir $(CURDIR))
 BUILD		:=	build
-#SOURCES		:=	src libft libax src/constants src/input
 SOURCES		:=	$(sort $(dir $(wildcard src/*/))) src libft libax
 DATA		:=	data
 INCLUDES	:=	includes libft libax \
 				-I$(DEVKITPRO)/portlibs/armv6k/include \
 				-I$(DEVKITPRO)/portlibs/3ds/include \
 				-I$(DEVKITPRO)/portlibs/3ds/include/SDL
-GRAPHICS	:=	gfx gfx/player
+GRAPHICS	:=	$(sort $(dir $(wildcard gfx/*/))) gfx
 #GFXBUILD	:=	$(BUILD)
 APP_TITLE	:=	Wertactics
 APP_DESCRIPTION	:=	FF6 inspired small game.

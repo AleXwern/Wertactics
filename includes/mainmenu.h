@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gfx.c                                              :+:      :+:    :+:   */
+/*   mainmenu.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: AleXwern <AleXwern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/11 22:06:05 by AleXwern          #+#    #+#             */
-/*   Updated: 2021/07/11 22:06:05 by AleXwern         ###   ########.fr       */
+/*   Created: 2021/08/02 14:30:11 by AleXwern          #+#    #+#             */
+/*   Updated: 2021/08/02 14:30:11 by AleXwern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "gfx.h"
+#ifndef MAINMENU_H
+# define MAINMUNU_H
 
-t_gfxdim		g_bgDim[] = {
-    {.width = 425, .height = 240},
-    //{.width = 572, .height = 240},
-	{.width = 760, .height = 260},
-    {.width = 868, .height = 240}
-};
-C2D_Sprite		*g_backgrounds = NULL;
+#include "tactics.h"
+#include "menu.h"
 
-C2D_Sprite		*g_npcs = NULL;
+#define MM_GFX_COUNT	4
+#define MM_KEY_COOLDOWN	20
+
+typedef struct	s_mainmenu
+{
+	t_menu		mm;
+	u8			sequence;	//cutscene sequence before the actual menu
+	u8			subseq;		//0-fadein, 1-still, 2-fadeout
+	u8			frame;		//frame of subseq;
+}				t_mainmenu;
+
+extern t_mainmenu	g_menu;
+
+#endif

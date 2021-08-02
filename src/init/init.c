@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "tactics.h"
+#include "menu.h"
 
 int		init_all(void)
 {
@@ -24,7 +25,8 @@ int		init_all(void)
 	SDL_Init(SDL_INIT_AUDIO);
 	Mix_Init(MIX_INIT_OGG);
 	Mix_HookMusicFinished(resume_music);
-	set_gameloop(render_game, key_state_game);
+	init_menu();
+	init_mm_sequence();
 	return (1);
 }
 
