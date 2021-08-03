@@ -6,7 +6,7 @@
 /*   By: AleXwern <AleXwern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 14:16:43 by AleXwern          #+#    #+#             */
-/*   Updated: 2021/08/01 14:40:31 by AleXwern         ###   ########.fr       */
+/*   Updated: 2021/08/03 20:12:55 by AleXwern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static int	keys_down(void)
 			case KEY_START:
 				return (1);
 			case KEY_A:
-				printf("\x1b[7;0HPressed A\n");
 				break;
 			case KEY_B:
 				speed = 2;
@@ -98,7 +97,6 @@ static int	keys_held(void)
 					break;
 				g_player.x--;
 				g_player.lock.xy.x = 18;
-				printf("\x1b[7;0HPosX %05u\nTile %u", g_player.x, g_map->tile[g_player.y * g_map->width + g_player.x].type);
 				moved = 1;
 				break;
 			case KEY_DRIGHT:
@@ -108,7 +106,6 @@ static int	keys_held(void)
 					break;
 				g_player.x++;
 				g_player.lock.xy.x = -18;
-				printf("\x1b[7;0HPosX %05u\nTile %u", g_player.x, g_map->tile[g_player.y * g_map->width + g_player.x].type);
 				moved = 1;
 				break;
 			case KEY_DUP:
@@ -118,7 +115,6 @@ static int	keys_held(void)
 					break;
 				g_player.y--;
 				g_player.lock.xy.y = 18;
-				printf("\x1b[7;0HPosY %05u\nTile %u", g_player.y, g_map->tile[g_player.y * g_map->width + g_player.x].type);
 				moved = 1;
 				break;
 			case KEY_DDOWN:
@@ -128,7 +124,6 @@ static int	keys_held(void)
 					break;
 				g_player.y++;
 				g_player.lock.xy.y = -18;
-				printf("\x1b[7;0HPosY %05u\nTile %u", g_player.y, g_map->tile[g_player.y * g_map->width + g_player.x].type);
 				moved = 1;
 				break;
 			default:

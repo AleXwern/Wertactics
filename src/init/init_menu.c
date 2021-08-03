@@ -23,18 +23,29 @@ void		set_menu(t_menu *menu, const char *path, e_menutype menutype)
 	get_next_line(fd, &text);
 	menu->text = ft_strsplit(text, ',');
 	free(text);
-	menu->size = ft_listlen(menu->text);
+	menu->size = ft_listlen(menu->text) - 1;
 	for (size_t i = 0; i < MENU_GFX_COUNT; i++)
 	{
 		C2D_SpriteFromSheet(&menu->gfx[menutype + i], g_msheet, i);
 		C2D_SpriteSetCenter(&menu->gfx[menutype + i], 0, 0);
         C2D_SpriteSetPos(&menu->gfx[menutype + i], 0, 0);
 	}
+	close(fd);
 	menu->padding = 0;
-	C2D_PlainImageTint(&menu->tint, 0xdce31e, 0.25f);
+	C2D_PlainImageTint(&menu->tint, 0xffdce31e, 0.25f);
 }
 
+void		clear_menu(t_menu *menu)
+{
+	ft_splitfree(menu->text);
+}
+
+/*
+**	Different menu graphics are loaded into memory where they can be fetched easily as needed.
+**	Freeing is maybe not needed as it's freed anyway when program closes.
+**	If there happends to be some weird quirk in 3DS OS then I'll be a good boy and clean after me.
+*/
 void		init_menu(void)
 {
-	g_msheet = C2D_SpriteSheetLoad("FILE");
+	g_msheet = C2D_SpriteSheetLoad("romfs:/gfx/menus.t3x");
 }

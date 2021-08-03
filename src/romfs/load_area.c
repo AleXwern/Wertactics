@@ -25,7 +25,7 @@ static void	set_mapdata(int fd)
 	ft_splitfree(data);
 }
 
-static void	unload_mapdata()
+static void	unload_mapdata(void)
 {
 	if (g_map)
 	{
@@ -103,6 +103,7 @@ int			load_map(char *id, u16 x, u16 y)
 	g_player.y = y;
 	g_player.lock.xy.x = 0;
 	g_player.lock.xy.y = 0;
+	close(fd);
 	printf("\x1b[4;0HMap loaded %dx%d", g_map->width, g_map->height);
 	return (0);
 }

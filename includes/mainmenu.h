@@ -17,7 +17,14 @@
 #include "menu.h"
 
 #define MM_GFX_COUNT	4
-#define MM_KEY_COOLDOWN	20
+#define MM_KEY_COOLDOWN	30
+
+enum
+{
+	MM_CONTINUE,
+	MM_LEVEL_EDITOR,
+	MM_EXIT
+};
 
 typedef struct	s_mainmenu
 {

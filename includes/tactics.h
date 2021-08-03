@@ -51,16 +51,17 @@ typedef struct	s_gfx
 
 int		exit_all(void);
 int		init_all(void);
-void	init_mm_sequence();
-void	exit_mm_sequence();
+void	init_mm_sequence(void);
+void	exit_mm_sequence(void);
+void	init_game(void);
 
 void	draw_background();
 t_gfx	read_bmp(char *file, int fd, int bread);
 
 void	exit_out(const char *msg);
 
-bool	load_backgrounds();
-bool	load_PlayerNPC();
+bool	load_backgrounds(void);
+bool	load_PlayerNPC(void);
 
 void	game_loop(void);
 void	set_gameloop(void (*render)(t_screen*), int (*keyhandle)(void));
@@ -75,6 +76,6 @@ int		play_sfx(u16 id);
 void	resume_music(void);
 
 int		load_map(char *id, u16 x, u16 y);
-void	try_load_warp();
+void	try_load_warp(void);
 
 #endif

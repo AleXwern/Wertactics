@@ -16,18 +16,12 @@ int				main(void)
 {
 	if (init_all())
 		ft_putendl("Inizialized systems!");
-	//if (!load_backgrounds())
-	//	exit_out("Couldn't load backdrops!");
-	if (!load_PlayerNPC())
-		exit_out("Couldn't load npcs!");
 	g_map = (t_area*)linearAlloc(sizeof(t_area));
-	if (load_map(ft_itoa(0), 1, 1))
-		exit_out("Map error");
 	if (!load_music("romfs:/str4E.ogg"))
 		printf("\x1b[14;0HWääää\n");
 	load_sfx("romfs:/eff0.wav", 0);
 	load_sfx("romfs:/eff1.wav", 1);
 	game_loop();
-	exit_out("Graceful exit.");
+	exit_out(NO_ERROR);
 	return 0;
 }
