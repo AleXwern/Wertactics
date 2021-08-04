@@ -1,0 +1,1 @@
+romfs:/audio/prio/eff0.wav,romfs:/audio/prio/eff1.wav

@@ -59,10 +59,10 @@ void	render_mainmenu(t_screen *top)
 	}
 }
 
-void	init_mm_sequence()
+void	init_mm_sequence(void)
 {
 	ft_bzero(&g_menu, sizeof(g_menu));
-	if (!(g_menugfx = (C2D_Sprite*)malloc(sizeof(C2D_Sprite) * MM_GFX_COUNT)))
+	if (!(g_menugfx = (C2D_Sprite*)ft_memalloc(sizeof(C2D_Sprite) * MM_GFX_COUNT)))
 		exit_out(MALLOC_ERROR);
 	if (!(g_mmsheet = C2D_SpriteSheetLoad("romfs:/gfx/mm.t3x")))
 		exit_out(MM_ERROR);
@@ -84,6 +84,7 @@ void	exit_mm_sequence(void)
 	clear_menu(&g_menu.mm);
 	ft_bzero(&g_menu, sizeof(g_menu));
 	C2D_SpriteSheetFree(g_mmsheet);
+	g_mmsheet = NULL;
 	free(g_menugfx);
 	g_menugfx = NULL;
 }

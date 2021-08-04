@@ -54,8 +54,9 @@ int		init_all(void);
 void	init_mm_sequence(void);
 void	exit_mm_sequence(void);
 void	init_game(void);
+void	exit_game(void);
 
-void	draw_background();
+void	draw_background(void);
 t_gfx	read_bmp(char *file, int fd, int bread);
 
 void	exit_out(const char *msg);
@@ -68,12 +69,6 @@ void	set_gameloop(void (*render)(t_screen*), int (*keyhandle)(void));
 void	render_game(t_screen *top);
 int		key_state_game(void);
 int		key_state_mm(void);
-
-int		load_music(const char *path);
-int		swap_music(const char *path);
-int		load_sfx(const char *path, u16 id);
-int		play_sfx(u16 id);
-void	resume_music(void);
 
 int		load_map(char *id, u16 x, u16 y);
 void	try_load_warp(void);

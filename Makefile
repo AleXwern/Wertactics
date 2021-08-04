@@ -49,7 +49,7 @@ APP_DESCRIPTION	:=	FF6 inspired small game.
 APP_AUTHOR	:=	AleXwern
 ROMFS		:=	romfs
 GFXBUILD	:=	$(ROMFS)/gfx
-IPADDR		:=	192.168.137.64
+IPADDR		:=	192.168.137.210
 
 #---------------------------------------------------------------------------------
 # options for code generation
@@ -67,7 +67,7 @@ CXXFLAGS	:= $(CFLAGS) -fno-rtti -fno-exceptions -std=gnu++11
 ASFLAGS	:=	-g $(ARCH)
 LDFLAGS	=	-specs=3dsx.specs -g $(ARCH) -Wl,-Map,$(notdir $*.map)
 
-LIBS	:= -lSDL -lSDL_mixer -lmpg123 -lmad -logg -lmikmod -lvorbisidec -logg -lSDL -lcitro2d -lcitro3d -lctru -lm
+LIBS	:= -lSDL -lSDL_mixer -lmad -logg -lmikmod -lvorbisidec -logg -lSDL -lcitro2d -lcitro3d -lctru -lm
 
 #---------------------------------------------------------------------------------
 # list of directories containing libraries, this must be the top level containing

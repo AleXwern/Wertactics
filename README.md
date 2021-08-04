@@ -8,4 +8,13 @@ It's just a little bit more interesting to develop on than PC. Maybe it's becaus
 Also the need of optimization is much greated here than with PC. At least at the start the code is many things except good looking but as things procees I need to pay attention to things like memory usage (ex. can't load all music at once) or how I just implement any specific feature. The main aim is for the game to run smooth 60fps and never dip below that outside instances like loading zones.
 
 # How do I compile this?
-You will need install libctru through DevkitPro from https://devkitpro.org/ and then it's just running the Makefile from terminal. The executable is Wer6.3dsx which can be run on 3DS on Citra. Audio does not work on Citra.
+You will need install Msys2 from https://www.msys2.org/ and DevkitPro from https://devkitpro.org/ and install needed libraries and then it's just running the Makefile from terminal. The executable is Wer6.3dsx which can be run on 3DS on Citra. Audio does not work on Citra but absolutely fine on real hardware.<br>
+Online about 52 in Makefile there's IPADDR which is supposed to be the local IP of the target 3DS -> Using 'make run' you can send the executable to your 3DS from the terminal. Open Homebrew Launcher and press Y and you can also find the 3DS IP here. Make sure both PC and 3DS are connected to same network.
+Needed libraries can be installed with 'pacman -S [libraryname]'
+1. 3ds-dev (all libraries assossiated)
+2. 3ds-sdl
+3. 3ds-sdl_mixer
+4. 3ds-libmad
+5. 3ds-libogg
+6. 3ds-libvorbisidec
+7. 3ds-mikmod

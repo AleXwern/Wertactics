@@ -75,4 +75,9 @@ typedef enum
 }				e_npcDir;
 extern C2D_Sprite   *g_npcs;
 
+bool		load_backgrounds(void);
+bool		load_PlayerNPC(void);
+void		unload_backgrounds(void);
+void		unload_playerNPC(void);
+
 #endif

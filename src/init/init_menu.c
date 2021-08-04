@@ -23,12 +23,12 @@ void		set_menu(t_menu *menu, const char *path, e_menutype menutype)
 	get_next_line(fd, &text);
 	menu->text = ft_strsplit(text, ',');
 	free(text);
-	menu->size = ft_listlen(menu->text) - 1;
+	menu->size = ft_listlen(menu->text);
 	for (size_t i = 0; i < MENU_GFX_COUNT; i++)
 	{
 		C2D_SpriteFromSheet(&menu->gfx[menutype + i], g_msheet, i);
 		C2D_SpriteSetCenter(&menu->gfx[menutype + i], 0, 0);
-        C2D_SpriteSetPos(&menu->gfx[menutype + i], 0, 0);
+		C2D_SpriteSetPos(&menu->gfx[menutype + i], 0, 0);
 	}
 	close(fd);
 	menu->padding = 0;

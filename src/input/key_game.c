@@ -6,12 +6,13 @@
 /*   By: AleXwern <AleXwern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 14:16:43 by AleXwern          #+#    #+#             */
-/*   Updated: 2021/08/03 20:12:55 by AleXwern         ###   ########.fr       */
+/*   Updated: 2021/08/04 17:35:53 by AleXwern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tactics.h"
 #include "player.h"
+#include "audio.h"
 
 s8	speed = 1;
 
@@ -27,23 +28,24 @@ static int	keys_down(void)
 		switch (key)
 		{
 			case KEY_START:
-				return (1);
+				exit_game();
+				return (0);
 			case KEY_A:
 				break;
 			case KEY_B:
 				speed = 2;
 				break;
 			case KEY_Y:
-				play_sfx(0);
+				play_sfx(0, true);
 				break;
 			case KEY_X:
-				play_sfx(1);
+				play_sfx(1, true);
 				break;
 			case KEY_L:
-				swap_music("romfs:/str4E.ogg");
+				swap_music("romfs:/audio/bgm/str4E.ogg");
 				break;
 			case KEY_R:
-				swap_music("romfs:/finboss.ogg");
+				swap_music("romfs:/audio/bgm/finboss.ogg");
 				break;
 			default:
 				break;

@@ -39,4 +39,14 @@ typedef struct	s_audio
 	u16			*buffer[2];
 }				t_audio;
 
+int			load_prio_sfx(char **path);
+int			load_sfx(const char *path);
+void		unload_sfx(u16 id);
+void		init_sfx(void);
+int			play_sfx(u16 id, bool prio);
+
+int			load_music(const char *path);
+int			swap_music(const char *path);
+void		resume_music(void);
+
 #endif

@@ -36,4 +36,5 @@ void			render_menu(t_menu *menu)
 		//C2D_TextOptimize(&text);
 		C2D_DrawText(&text, 0, x + 40, y + 5, 0.0f, 1.0f, 1.0f);
 	}
+	C2D_TextBufDelete(buffer);
 }

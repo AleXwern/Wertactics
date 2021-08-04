@@ -16,11 +16,8 @@ int				main(void)
 {
 	if (init_all())
 		ft_putendl("Inizialized systems!");
-	g_map = (t_area*)linearAlloc(sizeof(t_area));
-	if (!load_music("romfs:/str4E.ogg"))
-		printf("\x1b[14;0HWääää\n");
-	load_sfx("romfs:/eff0.wav", 0);
-	load_sfx("romfs:/eff1.wav", 1);
+	if (!(g_map = (t_area*)ft_memalloc(sizeof(t_area))))
+		exit_out(MALLOC_ERROR);
 	game_loop();
 	exit_out(NO_ERROR);
 	return 0;

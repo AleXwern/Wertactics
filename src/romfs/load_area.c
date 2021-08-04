@@ -80,10 +80,10 @@ int			load_map(char *id, u16 x, u16 y)
 	}
 	unload_mapdata();
 	set_mapdata(fd);
-	if (!(g_map->tile = (t_tile*)malloc(sizeof(t_tile) * g_map->width * g_map->height)))
-		return (1);
-	if (!(g_map->warp = (t_warp*)malloc(sizeof(t_warp) * 10)))
-		return (1);
+	if (!(g_map->tile = (t_tile*)ft_memalloc(sizeof(t_tile) * g_map->width * g_map->height)))
+		exit_out(MALLOC_ERROR);
+	if (!(g_map->warp = (t_warp*)ft_memalloc(sizeof(t_warp) * 10)))
+		exit_out(MALLOC_ERROR);
 	for (u16 y = 0; y < g_map->height; y++)
 	{
 		get_next_line(fd, &dummy);

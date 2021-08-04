@@ -28,3 +28,14 @@ void		init_game(void)
 	load_backgrounds();
 	load_PlayerNPC();
 }
+
+/*
+**	There's probably more here that I don't understand (Which is REALLY bad to be honest)
+**	init MM needs to be first or I load bad graphics into memory sometimes.
+*/
+void		exit_game(void)
+{
+	init_mm_sequence();
+	unload_backgrounds();
+	unload_playerNPC();
+}
