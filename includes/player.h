@@ -15,14 +15,10 @@
 
 # include <3ds.h>
 # include "gfx.h"
+# include "character.h"
 
-typedef enum
-{
-	DIR_UP,
-	DIR_RIGHT,
-	DIR_DOWN,
-	DIR_LEFT
-}				e_direction;
+# define PARTY_SIZE		10
+# define ACTIVE_SIZE	5
 
 typedef struct	s_player
 {
@@ -37,10 +33,13 @@ typedef struct	s_player
 			s8	y;
 		}		xy;
 	}			lock;
-	e_npcDir	direction;
+	u8			direction;
 	e_npcSprite	sprite;
 	s8			speed;
 }				t_player;
+
 extern t_player	g_player;
+extern t_chara	g_party[PARTY_SIZE];
+extern t_chara	*g_active[ACTIVE_SIZE];
 
 #endif

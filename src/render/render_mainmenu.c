@@ -59,6 +59,11 @@ void	render_mainmenu(t_screen *top)
 	}
 }
 
+void	render_mainmenu_bottom(t_screen *bottom)
+{
+	return;
+}
+
 void	init_mm_sequence(void)
 {
 	ft_bzero(&g_menu, sizeof(g_menu));
@@ -76,7 +81,7 @@ void	init_mm_sequence(void)
 	g_menu.mm.x = 100;
 	g_menu.mm.y = 70;
 	g_menu.mm.padding = 20;
-	set_gameloop(render_mainmenu, key_state_mm);
+	set_gameloop(render_mainmenu, render_mainmenu_bottom, key_state_mm);
 }
 
 void	exit_mm_sequence(void)

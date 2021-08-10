@@ -8,3 +8,4 @@ libctru/**
 build/**
 .vscode/**
 TEMP/**
+out/**

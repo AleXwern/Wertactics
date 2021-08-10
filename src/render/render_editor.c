@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   render_editor.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: AleXwern <AleXwern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/04 11:59:47 by anystrom          #+#    #+#             */
-/*   Updated: 2021/08/05 18:31:24 by AleXwern         ###   ########.fr       */
+/*   Created: 2021/08/05 14:34:23 by AleXwern          #+#    #+#             */
+/*   Updated: 2021/08/05 15:17:43 by AleXwern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "tactics.h"
+#include "editor.h"
 
-# include "libft.h"
-# define BUFF_SIZE 32
-# define MAX_FD 8192
+void	render_editor(t_screen *top)
+{
+	C2D_TargetClear(top, 0x000000ff);
+	C2D_SceneBegin(top);
+}
 
-int		get_first_line(const int fd, char **line);
-int		get_next_line(const int fd, char **line);
+void	render_editor_bottom(t_screen *bottom)
+{
+	return;
+}
 
-//Special implementation for Wertactics
-int		get_next_lineg(const int fd, char **line);
-void	clear_next_line(const int fd);
+void	init_editor(void)
+{
+	
+}
 
-#endif
+void	exit_editor(void)
+{
+	
+}

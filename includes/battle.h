@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   battle.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: AleXwern <AleXwern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/04 11:59:47 by anystrom          #+#    #+#             */
-/*   Updated: 2021/08/05 18:31:24 by AleXwern         ###   ########.fr       */
+/*   Created: 2021/08/10 15:06:21 by AleXwern          #+#    #+#             */
+/*   Updated: 2021/08/10 16:46:26 by AleXwern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef BATTLE_H
+# define BATTLE_H
 
-# include "libft.h"
-# define BUFF_SIZE 32
-# define MAX_FD 8192
+# define PLAYER_END			ACTIVE_SIZE
+# define MAX_ENEMY			9
+# define MAX_CHARA			ACTIVE_SIZE + MAX_ENEMY
 
-int		get_first_line(const int fd, char **line);
-int		get_next_line(const int fd, char **line);
+typedef struct	s_battlechar
+{
+	u16			sprite;
+	u16			x;
+	u16			y;
+	u8			dir;
+}				t_battlechar;
+# define BCHAR_SIZE		sizeof(t_battlechar) / sizeof(u16)
 
-//Special implementation for Wertactics
-int		get_next_lineg(const int fd, char **line);
-void	clear_next_line(const int fd);
+void			init_battle(char *id);
+void			exit_battle(void);
 
 #endif

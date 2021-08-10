@@ -6,13 +6,14 @@
 /*   By: AleXwern <AleXwern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 14:16:43 by AleXwern          #+#    #+#             */
-/*   Updated: 2021/08/04 17:35:53 by AleXwern         ###   ########.fr       */
+/*   Updated: 2021/08/05 20:44:23 by AleXwern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tactics.h"
 #include "player.h"
 #include "audio.h"
+#include "gfx.h"
 
 s8	speed = 1;
 
@@ -98,7 +99,7 @@ static int	keys_held(void)
 					g_map->tile[g_player.y * g_map->width + (g_player.x - 1)].type)
 					break;
 				g_player.x--;
-				g_player.lock.xy.x = 18;
+				g_player.lock.xy.x = 20;
 				moved = 1;
 				break;
 			case KEY_DRIGHT:
@@ -107,7 +108,7 @@ static int	keys_held(void)
 					g_map->tile[g_player.y * g_map->width + (g_player.x + 1)].type)
 					break;
 				g_player.x++;
-				g_player.lock.xy.x = -18;
+				g_player.lock.xy.x = -20;
 				moved = 1;
 				break;
 			case KEY_DUP:
@@ -116,7 +117,7 @@ static int	keys_held(void)
 					g_map->tile[(g_player.y - 1) * g_map->width + g_player.x].type)
 					break;
 				g_player.y--;
-				g_player.lock.xy.y = 18;
+				g_player.lock.xy.y = 20;
 				moved = 1;
 				break;
 			case KEY_DDOWN:
@@ -125,7 +126,7 @@ static int	keys_held(void)
 					g_map->tile[(g_player.y + 1) * g_map->width + g_player.x].type)
 					break;
 				g_player.y++;
-				g_player.lock.xy.y = -18;
+				g_player.lock.xy.y = -20;
 				moved = 1;
 				break;
 			default:

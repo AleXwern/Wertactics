@@ -17,7 +17,7 @@ static void	set_mapdata(int fd)
 	char	*dummy;
 	char	**data;
 	
-	get_next_line(fd, &dummy);
+	get_next_lineg(fd, &dummy);
 	data = ft_strsplit(dummy, ',');
 	free(dummy);
 	g_map->width = ft_atoi(data[0]);
@@ -41,14 +41,20 @@ void		load_warps(int fd)
 	u16		x;
 	u16		y;
 
-	if (get_next_line(fd, &dummy))
+	if (get_next_lineg(fd, &dummy))
 		free(dummy);
 	else
 		return;
 	g_map->warpcount = 0;
-	while (get_next_line(fd, &dummy))
+	while (get_next_lineg(fd, &dummy))
 	{
+		if (dummy[0] == '#')
+		{
+			free(dummy);
+			break;
+		}
 		warp = ft_strsplit(dummy, ',');
+		free(dummy);
 		g_map->warp[g_map->warpcount].id = ft_atoi(warp[2]);
 		g_map->warp[g_map->warpcount].x = ft_atoi(warp[3]);
 		g_map->warp[g_map->warpcount].y = ft_atoi(warp[4]);
@@ -71,7 +77,8 @@ int			load_map(char *id, u16 x, u16 y)
 
 	path = ft_quadjoin("romfs:/maps/", id, "/area.map", "");
 	free(id);
-	fd = open(path, O_RDONLY);
+	fd = open(path, O_RDONLY | O_BINARY);
+	clear_next_line(fd);
 	free(path);
 	if (fd == -1)
 	{
@@ -86,7 +93,7 @@ int			load_map(char *id, u16 x, u16 y)
 		exit_out(MALLOC_ERROR);
 	for (u16 y = 0; y < g_map->height; y++)
 	{
-		get_next_line(fd, &dummy);
+		get_next_lineg(fd, &dummy);
 		for (u16 x = 0; x < g_map->width; x++)
 		{
 			g_map->tile[y * g_map->width + x].type = dummy[x] - '0';

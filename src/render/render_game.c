@@ -19,14 +19,19 @@ void		render_game(t_screen *top)
 	draw_background();
 }
 
+void		render_game_bottom(t_screen *bottom)
+{
+	return;
+}
+
 void		init_game(void)
 {
 	exit_mm_sequence();
-	set_gameloop(render_game, key_state_game);
+	set_gameloop(render_game, render_game_bottom, key_state_game);
 	if (load_map(ft_itoa(0), 1, 1))
 		exit_out(MAP_ERROR);
 	load_backgrounds();
-	load_PlayerNPC();
+	load_PlayerNPC(NPC_SPR_GIRL);
 }
 
 /*

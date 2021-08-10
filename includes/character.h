@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   character.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: AleXwern <AleXwern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/04 11:59:47 by anystrom          #+#    #+#             */
-/*   Updated: 2021/08/05 18:31:24 by AleXwern         ###   ########.fr       */
+/*   Created: 2021/08/10 14:10:07 by AleXwern          #+#    #+#             */
+/*   Updated: 2021/08/10 14:14:45 by AleXwern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef CHARACTER_H
+# define CHARACTER_H
 
-# include "libft.h"
-# define BUFF_SIZE 32
-# define MAX_FD 8192
+#include <3ds/types.h>
 
-int		get_first_line(const int fd, char **line);
-int		get_next_line(const int fd, char **line);
+//might use 8 bits for stats instead.
+typedef struct	s_chara
+{
+	u16			sprite;
+	u16			strength;
+	u16			magic;
+	u16			defense;
+	u16			resistance;
+	float		speed;
+}				t_chara;
 
-//Special implementation for Wertactics
-int		get_next_lineg(const int fd, char **line);
-void	clear_next_line(const int fd);
+typedef struct	s_growth
+{
+	u8			strength;
+	u8			magic;
+	u8			defense;
+	u8			resistance;
+}				t_growth;
 
 #endif

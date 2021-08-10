@@ -42,7 +42,7 @@ INCLUDES	:=	includes libft libax \
 				-I$(DEVKITPRO)/portlibs/armv6k/include \
 				-I$(DEVKITPRO)/portlibs/3ds/include \
 				-I$(DEVKITPRO)/portlibs/3ds/include/SDL
-GRAPHICS	:=	$(sort $(dir $(wildcard gfx/*/))) gfx
+GRAPHICS	:=	$(sort $(dir $(wildcard gfx/*/))) $(sort $(dir $(wildcard gfx/*/*/))) gfx
 #GFXBUILD	:=	$(BUILD)
 APP_TITLE	:=	Wertactics
 APP_DESCRIPTION	:=	FF6 inspired small game.
@@ -189,6 +189,18 @@ all: $(BUILD) $(GFXBUILD) $(DEPSDIR) $(ROMFS_T3XFILES) $(T3XHFILES)
 run: all
 	3dslink -a $(IPADDR) Wer6.3dsx
 
+source:
+	@echo $(SOURCES)
+	@echo $(DATA)
+	@echo $(INCLUDES)
+	@echo $(GRAPHICS)
+	@echo $(APP_TITLE)
+	@echo $(APP_DESCRIPTION)
+	@echo $(APP_AUTHOR)
+	@echo $(ROMFS)
+	@echo $(GFXBUILD)
+	@echo $(IPADDR)
+
 else
 
 all:
@@ -226,9 +238,8 @@ cleantex:
 #---------------------------------------------------------------------------------
 $(GFXBUILD)/%.t3x	$(BUILD)/%.h	:	%.t3s
 #---------------------------------------------------------------------------------
-	echo $(notdir $<)
-	echo this should run
-	tex3ds -i $< -H $(BUILD)/$*.h -d $(DEPSDIR)/$*.d -o $(GFXBUILD)/$*.t3x
+	@echo $(notdir $<)
+	@tex3ds -i $< -H $(BUILD)/$*.h -d $(DEPSDIR)/$*.d -o $(GFXBUILD)/$*.t3x
 
 
 #---------------------------------------------------------------------------------

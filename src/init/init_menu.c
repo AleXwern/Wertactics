@@ -20,7 +20,9 @@ void		set_menu(t_menu *menu, const char *path, e_menutype menutype)
 	char	*text;
 
 	fd = open(path, O_RDONLY | O_BINARY);
-	get_next_line(fd, &text);
+	clear_next_line(fd);
+	get_next_lineg(fd, &text);
+	printf("FD %d - %s\n", fd, text);
 	menu->text = ft_strsplit(text, ',');
 	free(text);
 	menu->size = ft_listlen(menu->text);
