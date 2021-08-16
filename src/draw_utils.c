@@ -57,8 +57,8 @@ void			draw_background()
 	s32			offset_y;
 	t_gfxdim	offset;
 
-	offset_x = -(g_player.x * 20 + g_player.lock.xy.x) + 192;
-	offset_y = -(g_player.y * 20 + g_player.lock.xy.y) + 145;
+	offset_x = -(g_player.x * NPC_SPRDIM_X + g_player.lock.xy.x) + 192;
+	offset_y = -(g_player.y * NPC_SPRDIM_Y + g_player.lock.xy.y) + 145;
 	offset.height = offset_y;
 	offset.width = offset_x;
 	if (offset_x > 0)

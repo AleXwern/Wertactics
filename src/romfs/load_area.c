@@ -91,6 +91,7 @@ int			load_map(char *id, u16 x, u16 y)
 		exit_out(MALLOC_ERROR);
 	if (!(g_map->warp = (t_warp*)ft_memalloc(sizeof(t_warp) * 10)))
 		exit_out(MALLOC_ERROR);
+	randomx_seed((u64)g_map->warp + (u64)g_map->tile);
 	for (u16 y = 0; y < g_map->height; y++)
 	{
 		get_next_lineg(fd, &dummy);

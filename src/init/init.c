@@ -43,6 +43,8 @@ int			init_all(void)
 	init_menu();
 	init_mm_sequence();
 	init_music();
+	load_enemies();
+	mkdir("sdmc:/3ds/wer6", 0755);		//Location for savedata. HB should always have SDMC mounted.
 	return (1);
 }
 

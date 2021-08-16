@@ -6,7 +6,7 @@
 /*   By: AleXwern <AleXwern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 14:16:43 by AleXwern          #+#    #+#             */
-/*   Updated: 2021/08/05 20:44:23 by AleXwern         ###   ########.fr       */
+/*   Updated: 2021/08/12 15:35:27 by AleXwern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,11 @@ static int	keys_held(void)
 		keys -= key;		//Remove the bit from "queue" and try loop again.
 	}
 	if (moved)
+	{
 		try_load_warp();
+		randomx_seed(g_player.y * g_player.x - g_player.direction);
+		g_player.aggro += 1;
+	}
 	return (0);
 }
 
@@ -148,5 +152,10 @@ int			key_state_game(void)
 	keys_up();
 	if ((g_player.lock.xy.x & 1) == 0 && (g_player.lock.xy.y & 1) == 0)
 		g_player.speed = speed;
+	if (g_player.aggro >= g_player.maxaggro)
+	{
+		g_player.lock.check = 0;
+		init_battle(ft_itoa(0));	//Encounter array
+	}
 	return (ret);
 }

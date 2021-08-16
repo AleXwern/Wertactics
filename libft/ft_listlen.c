@@ -17,6 +17,8 @@ size_t		ft_listlen(char	**list)
 	size_t	len;
 
 	len = 0;
+	if (!list)
+		return (0);
 	while (list[len] != NULL)
 		len++;
 	return (len);

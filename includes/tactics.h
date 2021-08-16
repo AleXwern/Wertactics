@@ -60,6 +60,7 @@ void	draw_background(void);
 t_gfx	read_bmp(char *file, int fd, int bread);
 
 void	exit_out(const char *msg);
+void	signal_out(int signal);
 
 void	game_loop(void);
 void	set_gameloop(void (*top)(t_screen*),
@@ -73,5 +74,8 @@ int		key_state_mm(void);
 
 int		load_map(char *id, u16 x, u16 y);
 void	try_load_warp(void);
+
+void	randomx_seed(u64 seed);
+u32		randomx(void);
 
 #endif

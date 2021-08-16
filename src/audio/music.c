@@ -29,11 +29,14 @@ int			load_music(const char *path)
 
 int			swap_music(const char *path)
 {
+	Mix_Music	*temp;
+	
+	temp = Mix_LoadMUS_RW(SDL_RWFromFile(path, "rb"));
+	if (!temp)
+		return (0);
 	Mix_HaltMusic();
 	Mix_FreeMusic(music);
-	music = Mix_LoadMUS_RW(SDL_RWFromFile(path, "rb"));
-	if (!music)
-		return (0);
+	music = temp;
 	Mix_PlayMusic(music, -1);
 	return (1);
 }

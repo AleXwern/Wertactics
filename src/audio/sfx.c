@@ -24,7 +24,6 @@ int			load_prio_sfx(char **path)
 	for (u16 i = 0; i < SFX_COUNT; i++)
 	{
 		g_sfx[i] = Mix_LoadWAV(path[i]);
-		printf("->%s - [%x]\n", path[i], g_sfx[i]);
 	}
 	ft_splitfree(path);
 	return (1);

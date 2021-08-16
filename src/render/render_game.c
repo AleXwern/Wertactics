@@ -32,6 +32,7 @@ void		init_game(void)
 		exit_out(MAP_ERROR);
 	load_backgrounds();
 	load_PlayerNPC(NPC_SPR_GIRL);
+	g_player.maxaggro = randomx() % 50 + 20;
 }
 
 /*

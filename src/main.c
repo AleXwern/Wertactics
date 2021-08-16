@@ -14,6 +14,7 @@
 
 int				main(void)
 {
+	signal(SIGABRT, signal_out);
 	if (init_all())
 		ft_putendl("Inizialized systems!");
 	if (!(g_map = (t_area*)ft_memalloc(sizeof(t_area))))

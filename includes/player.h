@@ -36,6 +36,8 @@ typedef struct	s_player
 	u8			direction;
 	e_npcSprite	sprite;
 	s8			speed;
+	u16			aggro;
+	u16			maxaggro;
 }				t_player;
 
 extern t_player	g_player;

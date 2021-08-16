@@ -18,6 +18,7 @@
 # define NPC_ERROR		"Couldn't load npcs!"
 # define MAP_ERROR		"Couldn't load map!"
 # define SHEET_ERROR	"Couldn't load spritesheet!"
+# define TEST_ERROR		"No error... yet!"
 # define NO_ERROR		"Graceful exit."
 
 #endif

@@ -18,3 +18,9 @@ void    exit_out(const char *msg)
     exit_all();
     exit(0);
 }
+
+void	signal_out(int signal)
+{
+	printf("Major error!\n");
+	exit(1);
+}

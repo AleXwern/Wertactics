@@ -184,7 +184,7 @@ endif
 ifeq ($(strip $(HAVE_CONVERT)),yes)
 
 all: $(BUILD) $(GFXBUILD) $(DEPSDIR) $(ROMFS_T3XFILES) $(T3XHFILES)
-	@$(MAKE) --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
+	$(MAKE) --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
 
 run: all
 	3dslink -a $(IPADDR) Wer6.3dsx
@@ -200,6 +200,9 @@ source:
 	@echo $(ROMFS)
 	@echo $(GFXBUILD)
 	@echo $(IPADDR)
+
+relink:
+	@$(MAKE) --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
 
 else
 
