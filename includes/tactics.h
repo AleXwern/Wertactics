@@ -24,11 +24,7 @@
 # include <unistd.h>
 # include <math.h>
 //Headers related to this project
-# include "area.h"
 # include "audio.h"
-# include "bmp.h"
-# include "gfx.h"
-# include "player.h"
 # include "error.h"
 
 # define TOP_X_2	200

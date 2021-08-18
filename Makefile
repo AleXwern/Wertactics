@@ -49,7 +49,7 @@ APP_DESCRIPTION	:=	FF6 inspired small game.
 APP_AUTHOR	:=	AleXwern
 ROMFS		:=	romfs
 GFXBUILD	:=	$(ROMFS)/gfx
-IPADDR		:=	192.168.137.210
+IPADDR		:=	192.168.137.237
 
 #---------------------------------------------------------------------------------
 # options for code generation
@@ -184,7 +184,11 @@ endif
 ifeq ($(strip $(HAVE_CONVERT)),yes)
 
 all: $(BUILD) $(GFXBUILD) $(DEPSDIR) $(ROMFS_T3XFILES) $(T3XHFILES)
+	@whoami
 	$(MAKE) --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
+
+manual:
+	3dsxtool /c/Users/alexn/Desktop/All-things-coding/Wer6/Wer6.elf /c/Users/alexn/Desktop/All-things-coding/Wer6/Wer6.3dsx --smdh=/c/Users/alexn/Desktop/All-things-coding/Wer6/Wer6.smdh --romfs=/c/Users/alexn/Desktop/All-things-coding/Wer6/romfs
 
 run: all
 	3dslink -a $(IPADDR) Wer6.3dsx

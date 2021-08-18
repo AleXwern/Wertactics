@@ -6,12 +6,13 @@
 /*   By: AleXwern <AleXwern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 13:59:16 by AleXwern          #+#    #+#             */
-/*   Updated: 2021/08/11 15:13:13 by AleXwern         ###   ########.fr       */
+/*   Updated: 2021/08/18 15:22:18 by AleXwern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tactics.h"
 #include "gfx.h"
+#include "battle.h"
 
 C2D_SpriteSheet	g_foesheet = NULL;
 C2D_SpriteSheet	g_bbgsheet = NULL;
@@ -35,7 +36,7 @@ bool		load_enemies(void)
 	return (true);
 }
 
-void		get_enemy_sprites(C2D_Sprite *sprite, t_battlechar *data)
+void		get_enemy_sprites(C2D_Sprite *sprite, t_btlchar *data)
 {
 	for (u8 i = 0; i < MAX_ENEMY; i++)
 	{

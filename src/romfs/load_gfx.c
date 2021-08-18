@@ -12,6 +12,7 @@
 
 #include "tactics.h"
 #include "gfx.h"
+#include "player.h"
 
 C2D_SpriteSheet	g_bgsheet = NULL;
 C2D_SpriteSheet	g_npcsheet = NULL;

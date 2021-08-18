@@ -15,7 +15,6 @@
 
 # include <3ds.h>
 # include "citro2d.h"
-# include "battle.h"
 
 # define NUM_BACKGROUNDS	3
 # define NUM_NPC_SPRITES	12
@@ -84,7 +83,5 @@ bool		load_enemies(void);
 void		unload_backgrounds(void);
 void		unload_playerNPC(void);
 void		unload_enemies(void);
-void		get_battle_bg(C2D_Sprite *bg, u16 id);
-void		get_enemy_sprites(C2D_Sprite *sprite, t_battlechar *data);
 
 #endif

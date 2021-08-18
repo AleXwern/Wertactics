@@ -13,6 +13,7 @@
 #include "tactics.h"
 #include "gfx.h"
 #include "player.h"
+#include "area.h"
 
 void			draw_layer(t_bg	bg, s32 x, s32 y)
 {

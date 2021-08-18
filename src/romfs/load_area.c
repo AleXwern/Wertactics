@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "area.h"
+#include "player.h"
 
 static void	set_mapdata(int fd)
 {

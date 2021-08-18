@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "tactics.h"
+#include "gfx.h"
+#include "player.h"
 
 void		render_game(t_screen *top)
 {

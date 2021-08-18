@@ -12,6 +12,7 @@
 
 #include "tactics.h"
 #include "menu.h"
+#include "gfx.h"
 
 int			init_music(void)
 {

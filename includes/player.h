@@ -13,9 +13,9 @@
 #ifndef PLAYER_H
 # define PLAYER_H
 
-# include <3ds.h>
-# include "gfx.h"
+# include <3ds/types.h>
 # include "character.h"
+# include "gfx.h"
 
 # define PARTY_SIZE		10
 # define ACTIVE_SIZE	5

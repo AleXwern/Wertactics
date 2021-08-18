@@ -6,7 +6,7 @@
 /*   By: AleXwern <AleXwern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 14:16:43 by AleXwern          #+#    #+#             */
-/*   Updated: 2021/08/12 15:35:27 by AleXwern         ###   ########.fr       */
+/*   Updated: 2021/08/18 15:19:35 by AleXwern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "player.h"
 #include "audio.h"
 #include "gfx.h"
+#include "area.h"
+#include "battle.h"
 
 s8	speed = 1;
 
