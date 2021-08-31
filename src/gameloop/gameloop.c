@@ -40,7 +40,7 @@ void			game_loop(void)
 		newtime = osGetTime();
 		if (newtime - time > 1000)
 		{
-			printf("\x1b[5;0Hfps %llu\n", fps);
+			printf("\x1b[3;0Hfps %llu\n", fps);
 			time = newtime;
 			fps = 0;
 		}

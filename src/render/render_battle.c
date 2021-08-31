@@ -6,7 +6,7 @@
 /*   By: AleXwern <AleXwern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 14:45:57 by AleXwern          #+#    #+#             */
-/*   Updated: 2021/08/18 15:20:32 by AleXwern         ###   ########.fr       */
+/*   Updated: 2021/08/27 15:52:24 by AleXwern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 C2D_Sprite		g_enemies[MAX_ENEMY];
 C2D_Sprite		g_battlebg;
-t_battle		g_battle;
 
 void			render_battle(t_screen *top)
 {
@@ -26,6 +25,12 @@ void			render_battle(t_screen *top)
 	{
 		C2D_SpriteSetPos(&g_npcs[NPC_DIR_LEFT], g_battle.actors[i].x, g_battle.actors[i].y);
 		C2D_DrawSprite(&g_npcs[NPC_DIR_LEFT]);
+		if (g_battle.actors[i].seq.frame < g_battle.actors[i].seq.anim[0].frames)
+		{
+			g_battle.actors[i].x += g_battle.actors[i].seq.anim[0].x;
+			g_battle.actors[i].y += g_battle.actors[i].seq.anim[0].y;
+			g_battle.actors[i].seq.frame++;
+		}
 	}
 	for (u8 i = 0; i < g_battle.count; i++)
 	{
@@ -59,6 +64,7 @@ void			init_battle(char *id)
 		g_battle.actors[i].y = 20 + (i * 50);
 		g_battle.actors[i].dir = NPC_DIR_LEFT;
 	}
+	g_battle.actors[0].seq.anim[0] = (t_frame){.frames = 5, .x = -5};
 	if (get_next_lineg(fd, &id) != 1)
 		exit_out(MALLOC_ERROR);
 	close(fd);

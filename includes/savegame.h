@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   save_data.c                                        :+:      :+:    :+:   */
+/*   savegame.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: AleXwern <AleXwern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/12 17:59:16 by AleXwern          #+#    #+#             */
-/*   Updated: 2021/08/23 13:27:32 by AleXwern         ###   ########.fr       */
+/*   Created: 2021/08/19 16:37:21 by AleXwern          #+#    #+#             */
+/*   Updated: 2021/08/23 16:03:46 by AleXwern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "savegame.h"
+#ifndef SAVEGAME_H
+# define SAVEGAME_H
 
-void	save_game(void)
-{
-	int	fd;
-	u64	sav;
-	
-	fd = open("sdmc:/3ds/wer60.sav", O_WRONLY | O_BINARY | O_CREAT | O_TRUNC);
-	if (fd == -1)
-		return;
-	sav = SAVE_VERSION;
-	write(fd, &sav, sizeof(SAVE_VERSION));
-	write(fd, &g_player, sizeof(g_player));
-	write(fd, &g_party, sizeof(g_party));
-	close(fd);
-	printf("\x1b[7;0HSaved save \n");
-}
+# include "tactics.h"
+# include "player.h"
+
+/*
+**	This is just a simple checksum so no weird saves get loaded.
+**	I'll change the save format quite a lot so things will change.
+**	Prepare to lose all your stuff all the time.
+*/
+# define SAVE_VERSION	(sizeof(t_player) | (sizeof(t_chara) << 8) | (0x3c42 << 16))
+
+void	load_game(void);
+void	save_game(void);
+
+#endif

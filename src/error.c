@@ -21,6 +21,6 @@ void    exit_out(const char *msg)
 
 void	signal_out(int signal)
 {
-	printf("Major error!\n");
+	printf("\x1b[2;0HMajor error!\n");
 	exit(1);
 }

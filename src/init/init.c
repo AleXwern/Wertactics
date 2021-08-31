@@ -19,8 +19,7 @@ int			init_music(void)
 	int		fd;
 	char	*gnl;
 
-	if (!load_music("romfs:/audio/bgm/str4E.ogg"))
-		printf("\x1b[14;0HWääää\n");
+	load_music("romfs:/audio/bgm/str4E.ogg");
 	fd = open("romfs:/audio/prio_sfx.txt", O_RDONLY | O_BINARY);
 	get_next_lineg(fd, &gnl);
 	load_prio_sfx(ft_strsplit(gnl, ','));

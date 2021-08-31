@@ -45,7 +45,7 @@ void			draw_npcs(t_gfxdim offset)
 	frame = g_player.direction + ((anim / 10) % 3);
 	C2D_SpriteSetPos(&g_npcs[frame], TOP_X_2 - offset.width, TOP_Y_2 - offset.height + 35);
 	C2D_DrawSprite(&g_npcs[frame]);
-	printf("\x1b[9;0Hframe %lx\n", g_player.direction + ((anim / 10) % 3));
+	printf("\x1b[1;0Hframe %lx\n", g_player.direction + ((anim / 10) % 3));
 	if (g_player.lock.check)
 		anim += g_player.speed;
 	else

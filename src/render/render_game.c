@@ -13,6 +13,7 @@
 #include "tactics.h"
 #include "gfx.h"
 #include "player.h"
+#include "savegame.h"
 
 void		render_game(t_screen *top)
 {
@@ -34,6 +35,8 @@ void		init_game(void)
 		exit_out(MAP_ERROR);
 	load_backgrounds();
 	load_PlayerNPC(NPC_SPR_GIRL);
+	load_game();
+	g_player.aggro = 0;
 	g_player.maxaggro = randomx() % 50 + 20;
 }
 

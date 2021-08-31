@@ -35,6 +35,7 @@ int			swap_music(const char *path)
 	if (!temp)
 		return (0);
 	Mix_HaltMusic();
+	while (Mix_PlayingMusic()) {}	//This is to make sure music is actually stopped when we free it
 	Mix_FreeMusic(music);
 	music = temp;
 	Mix_PlayMusic(music, -1);

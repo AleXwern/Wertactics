@@ -83,7 +83,7 @@ int			load_map(char *id, u16 x, u16 y)
 	free(path);
 	if (fd == -1)
 	{
-		printf("\x1b[10;0HCouldn't load map\n");
+		printf("\x1b[5;0HCouldn't load map\n");
 		return (1);
 	}
 	unload_mapdata();
@@ -113,7 +113,7 @@ int			load_map(char *id, u16 x, u16 y)
 	g_player.lock.xy.x = 0;
 	g_player.lock.xy.y = 0;
 	close(fd);
-	printf("\x1b[4;0HMap loaded %dx%d", g_map->width, g_map->height);
+	printf("\x1b[6;0HMap loaded %dx%d", g_map->width, g_map->height);
 	return (0);
 }
 

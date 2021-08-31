@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   save_data.c                                        :+:      :+:    :+:   */
+/*   animation.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: AleXwern <AleXwern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/12 17:59:16 by AleXwern          #+#    #+#             */
-/*   Updated: 2021/08/23 13:27:32 by AleXwern         ###   ########.fr       */
+/*   Created: 2021/08/19 15:57:49 by AleXwern          #+#    #+#             */
+/*   Updated: 2021/08/27 14:51:59 by AleXwern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "savegame.h"
+#ifndef ANIMATION_H
+# define ANIMATION_H
 
-void	save_game(void)
+#include <3ds/types.h>
+
+typedef struct	s_frame
 {
-	int	fd;
-	u64	sav;
-	
-	fd = open("sdmc:/3ds/wer60.sav", O_WRONLY | O_BINARY | O_CREAT | O_TRUNC);
-	if (fd == -1)
-		return;
-	sav = SAVE_VERSION;
-	write(fd, &sav, sizeof(SAVE_VERSION));
-	write(fd, &g_player, sizeof(g_player));
-	write(fd, &g_party, sizeof(g_party));
-	close(fd);
-	printf("\x1b[7;0HSaved save \n");
-}
+	u16			frames;		//How many frames this animation will be played
+	s8			x;			//character pos X change
+	s8			y;			//character pos Y change
+}				t_frame;
+
+typedef struct	s_seq
+{
+	u16			frame;		//How many frames have played
+	t_frame		anim[3];	//framesequence
+}				t_seq;
+
+#endif
